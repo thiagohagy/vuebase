@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import store from "@/store";
-import AppNav from "@/components/Nav";
+import authStore from "@/store/auth";
+import AppNav from "@/components/shared/Nav";
 
 export default {
   name: 'App',
@@ -18,7 +18,7 @@ export default {
     AppNav,
   },
   beforeCreate () {
-    if (!store.state.isLogged) {
+    if (!authStore.state.isLogged) {
         this.$router.push('/login')
     }
   },

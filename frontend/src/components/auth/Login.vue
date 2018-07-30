@@ -16,7 +16,7 @@
 </template>
 
 <script>
-  import store from '@/store'
+  import authStore from '@/store/auth'
   import ls from 'local-storage'
 
   export default {
@@ -33,7 +33,7 @@
     },
 
     beforeCreate () {
-      if (store.state.isLogged) {
+      if (authStore.state.isLogged) {
         this.$router.push('/')
       }
     },
@@ -45,7 +45,7 @@
         this.$http.post('login', this.form).then((response) => {
           if (response.data.success) {
             ls('token', response.data.token)
-            store.commit('LOGIN_USER')
+            authStore.commit('LOGIN_USER')
             this.$router.push('/')
           } else {
             this.infoError = true

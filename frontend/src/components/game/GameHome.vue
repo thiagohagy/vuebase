@@ -5,7 +5,7 @@
 
     <div class="row">
       <div class="col">
-        <router-link to="/anime/new" class="btn btn-success" role="button">New</router-link>
+        <router-link to="/game/new" class="btn btn-success" role="button">New</router-link>
         <hr>
       </div>
     </div>
@@ -27,7 +27,7 @@
                     <img :src="item.image" :alt="item.name" class="rounded-circle img">
                   </td>
                   <td>
-                    <router-link title="Edit" :to="{ name: 'AnimeEdit', params: { id: item._id } }">
+                    <router-link title="Edit" :to="{ name: 'GameEdit', params: { id: item._id } }">
                       edit
                     </router-link>
                     /
@@ -44,10 +44,9 @@
 
 <script>
 
-import AnimeNew from './AnimeNew'
+import AnimeNew from './GameNew'
 
 export default {
-  name: 'Anime',
   data() {
     return {
       data: [],
@@ -55,15 +54,15 @@ export default {
   },
   methods: {
     remove(id) {
-      this.$http.delete(`/v1/anime/${id}`).then(() => {
-        this.$http.get('/v1/anime').then((response) => {
+      this.$http.delete(`/v1/game/${id}`).then(() => {
+        this.$http.get('/v1/game').then((response) => {
           this.data = response.data.data;
         });
       })
     }
   },
   beforeMount() {
-    this.$http.get('/v1/anime').then((response) => {
+    this.$http.get('/v1/game').then((response) => {
       this.data = response.data.data;
     });
   }

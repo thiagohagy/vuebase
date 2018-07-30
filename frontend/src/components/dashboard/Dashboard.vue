@@ -8,10 +8,7 @@
       </p>
       <div class="jumbotron text-center">
         Welcome to VUEBASE Dashboard with authentication in JWT.
-
-        <p>WIP - This is a study case</p>
       </div>
-      <p class="text-center"><a href="https://rubensfernandes.mit-license.org/">MIT License</a> © Rubens Fernandes</p>
     </div>
   </div>
 

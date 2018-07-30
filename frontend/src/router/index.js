@@ -1,13 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Dashboard from '@/components/Dashboard'
-import Login from '@/components/Login'
-import Logout from '@/components/Logout'
+import Dashboard from '@/components/dashboard/Dashboard'
+import Login from '@/components/auth/Login'
+import Logout from '@/components/auth/Logout'
 
-import Anime from '@/components/anime/Anime'
-import AnimeHome from '@/components/anime/AnimeHome'
-import AnimeNew from '@/components/anime/AnimeNew'
-import AnimeEdit from '@/components/anime/AnimeEdit'
+import Game from '@/components/game/Game'
+import GameHome from '@/components/game/GameHome'
+import GameNew from '@/components/game/GameNew'
+import GameEdit from '@/components/game/GameEdit'
 
 import Users from '@/components/users/Users';
 import UsersHome from '@/components/users/UsersHome';
@@ -30,37 +30,37 @@ export default new Router({
         showOnNav: true,
       }
     },
-    // ANIMES
+    // Games
     {
-      path: '/anime',
-      redirect: '/anime/home',
-      name: 'Anime',
-      component: Anime,
+      path: '/game',
+      redirect: '/game/home',
+      name: 'Game',
+      component: Game,
       meta: {
-        humanName: 'Animes',
+        humanName: 'Games',
         showOnNav: true
       },
       children: [
         {
           path: 'home',
-          name: 'AnimeHome',
-          component: AnimeHome,
+          name: 'GameHome',
+          component: GameHome,
           meta: {
             humanName: 'List'
           },
         },
         {
           path: 'new',
-          name: 'AnimeNew',
-          component: AnimeNew,
+          name: 'GameNew',
+          component: GameNew,
           meta: {
             humanName: 'New'
           },
         },
         {
           path: 'edit/:id',
-          name: 'AnimeEdit',
-          component: AnimeEdit,
+          name: 'GameEdit',
+          component: GameEdit,
           meta: {
             humanName: 'Edit'
           },

@@ -5,4 +5,4 @@ var Schema = mongoose.Schema({
   image: String,
 });
 
-module.exports = mongoose.model('Anime', Schema);
+module.exports = mongoose.model('Game', Schema);

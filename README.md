@@ -1,4 +1,4 @@
-lets check this demo: http://vuebase.rubens.ninja
+Forked from  https://github.com/AshitaWeb/vue-base-boilerplate
 
 # SETUP
 ```
@@ -26,11 +26,8 @@ npm run dev
 ## Access
   http://localhost:8080
 
-## TODO
-  * !Learn more about stores!
-  * Add https to server
-  * Convert Breadcumbs to a component
-  * Learn how to create routes inside components
+## Theme used
+  https://bootswatch.com/darkly/
 
 Any help or pull request is welcome!
 

@@ -1,6 +1,6 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark" v-show="isLogged">
-    <router-link to="/" class="navbar-brand">VUE BASE</router-link>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-light" v-show="isLogged">
+    <router-link to="/" class="navbar-brand">MEVN</router-link>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import store from "@/store";
+import authStore from "@/store/auth";
 
 export default {
   name: 'app-nav',
@@ -47,7 +47,7 @@ export default {
   },
   computed: {
     isLogged() {
-      return store.state.isLogged
+      return authStore.state.isLogged
     }
   },
   beforeMount() {
@@ -55,3 +55,10 @@ export default {
   }
 }
 </script>
+
+<style>
+  .navbar {
+    margin-bottom: 10px
+  }
+</style>
+

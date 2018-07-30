@@ -20,7 +20,7 @@
         </div>
 
         <div class="form-group">
-          <router-link to="/anime" class="btn btn-danger">Cancel</router-link>
+          <router-link to="/game" class="btn btn-danger">Cancel</router-link>
           <button :disabled="!form._id" class="btn btn-primary float-right">Update</button>
         </div>
 
@@ -29,7 +29,7 @@
             <span aria-hidden="true">&times;</span>
             <span class="sr-only">Close</span>
           </button>
-          Anime updated!
+          Game updated!
         </div>
 
         <div class="alert alert-danger alert-dismissible" role="alert" v-show="hasError">
@@ -50,7 +50,7 @@
 <script>
 
 export default {
-  name: 'AnimeEdit',
+  name: 'GameEdit',
   data() {
     return {
       hasSuccess: false,
@@ -64,10 +64,10 @@ export default {
   },
   methods: {
     save() {
-      this.$http.put('v1/anime', this.form).then((response) => {
+      this.$http.put('v1/game', this.form).then((response) => {
         if (response.data.success) {
           this.hasSuccess = true
-          this.$router.push('/anime')
+          this.$router.push('/game')
         } else {
           this.hasError = true
         }
@@ -75,7 +75,7 @@ export default {
     }
   },
   beforeMount() {
-    this.$http.get('/v1/anime/' + this.$route.params.id).then((response) => {
+    this.$http.get('/v1/game/' + this.$route.params.id).then((response) => {
       if (response.data)
       this.form = response.data
     })

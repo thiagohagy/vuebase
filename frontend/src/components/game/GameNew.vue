@@ -47,7 +47,6 @@
 <script>
 
 export default {
-  name: 'AnimeNew',
   data() {
     return {
       hasSuccess: false,
@@ -60,10 +59,10 @@ export default {
   },
   methods: {
     save() {
-      this.$http.post('v1/anime', this.form).then((response) => {
+      this.$http.post('v1/game', this.form).then((response) => {
         if (response.data.success) {
           this.hasSuccess = true
-          this.$router.push('/anime')
+          this.$router.push('/game')
         } else {
           this.hasError = true
         }

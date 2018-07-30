@@ -45,8 +45,8 @@
           <button class="btn btn-primary float-right">Save</button>
         </div>
 
-        <alert-message class='alert-danger' timeout="0"  :show="hasError"   :message="errorMessage"></alert-message>
-        <alert-message class='alert-success' :show="hasSuccess" :message="successMessage"></alert-message>
+        <!-- <alert-message class='alert-danger' timeout="0"  :show="hasError"   :message="errorMessage"></alert-message> -->
+        <!-- <alert-message class='alert-success' :show="hasSuccess" :message="successMessage"></alert-message> -->
         
       </form>
     </div>
@@ -62,11 +62,11 @@ export default {
   name: 'UsersNew',
   data() {
     return {
-      hasSuccess: false,
-      hasError: false,
-      errorMessage: '',
-      hasSuccess: false,
-      successMessage: '',
+      // hasSuccess: false,
+      // hasError: false,
+      // errorMessage: '',
+      // hasSuccess: false,
+      // successMessage: '',
       validatePassword: false,
       form: {
         login: '',
@@ -87,14 +87,14 @@ export default {
         this.hasError = false;
         this.$http.post('v1/usuario', this.form).then((response) => {
           if (response.data.success) {
-            this.hasSuccess = true;
-            this.successMessage = 'New user created.';
+            // this.hasSuccess = true;
+            // this.successMessage = 'New user created.';
+            this.$toasted.success('New user created');
             setTimeout(() => {
               this.$router.push('/users');
             }, 3000);
-          } else {
-            this.hasError = true
-            this.errorMessage = response.err;
+          } else {            
+            this.$toasted.error('Error on create');
           }
         });
       }

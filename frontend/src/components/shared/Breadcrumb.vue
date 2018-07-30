@@ -1,5 +1,5 @@
 <template>
-  <div class="row">
+  <!-- <div class="row"> -->
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <router-link
@@ -15,7 +15,7 @@
         </router-link>
       </ol>
     </nav>
-  </div>
+  <!-- </div> -->
 </template>
 
 
