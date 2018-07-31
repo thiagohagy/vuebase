@@ -39,6 +39,8 @@
               </tbody>
           </table>
 
+          <b-pagination size="md"  class="justify-content-center" @input='fetchData' :total-rows="pagination.totalItems" v-model="pagination.currentPage" :per-page="pagination.perPage"></b-pagination>
+
       </div>
     </div>
   </div>
@@ -51,23 +53,30 @@ export default {
   data() {
     return {
       data: [],
+      pagination:{
+        totalItems:0,
+        perPage:10,
+        currentPage:1
+      }
     }
   },
   methods: {
     remove(id) {
       this.$http.delete(`/v1/usuario/${id}`).then(() => {
-        this.$http.get('/v1/usuario').then((response) => {
-          this.data = response.data.data;
-          this.$router.push('/users');
-          this.$toasted.success('User removed');
-        });
+        this.$router.push('/users');
+        this.$toasted.success('User removed');
+        this.fetchData();
       })
+    },
+    fetchData(){
+      this.$http.get(`/v1/usuario/all/${this.pagination.currentPage}`).then((response) => {
+        this.data = response.data.data;
+        this.pagination.totalItems = response.data.total;
+      });
     }
   },
   beforeMount() {
-    this.$http.get('/v1/usuario').then((response) => {
-      this.data = response.data.data;
-    });
+    this.fetchData();
   },
 }
 </script>

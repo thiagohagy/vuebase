@@ -5,11 +5,11 @@ var controller = require('./controller');
 
 /*Rotas*/
 
+/*get all*/
+rotas.get('/all/:page?/:text?', controller.index);
+
 /*get by id*/
 rotas.get('/:id', controller.get);
-
-/*get all*/
-rotas.get('/:skip?/:limit?/:text?', controller.index);
 
 /*save one*/
 rotas.post('/', controller.new);

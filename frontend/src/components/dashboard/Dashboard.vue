@@ -8,9 +8,7 @@
       </p>
       <div class="jumbotron text-center">
         Welcome to VUEBASE Dashboard with authentication in JWT.
-        <font-awesome-icon icon="edit" />
         <font-awesome-icon icon="check" />
-        <font-awesome-icon icon="trash-alt" />
       </div>
     </div>
   </div>

@@ -6,6 +6,7 @@ var bcrypt = require('bcrypt-nodejs');
 exports.index = function(req, res) {
 	var texto = req.params.text;
 
+	let skip = (req.params.page - 1) * 10;
 	var filtro = {};
 	filtro.ativo = true;
 
@@ -16,9 +17,8 @@ exports.index = function(req, res) {
 	}
 
 	Model.find(filtro)
-		.skip(parseInt(req.params.skip) || 0).limit(parseInt(req.params.limit) || 25)
+		.skip(skip).limit(10)
 		.exec(function(err, data){ //o que fazer com o resultado
-
 				Model.find(filtro).count()
 				.exec(function(err, total){
 					var response = {};
@@ -26,34 +26,6 @@ exports.index = function(req, res) {
 					response.data = data;
 					res.json(response);
 				});
-		});
-}
-
-
-exports.inativos = function(req, res) {
-	var texto = req.params.text;
-
-	var filtro = {};
-	filtro.ativo = false;
-
-	if (texto) {
-		texto = decodeURI(texto);
-		filtro.$or = [];
-		filtro.$or.push({nome: {$regex: texto, $options: 'ig'} });
-	}
-
-	Model.find(filtro)
-		.skip(parseInt(req.params.skip) || 0).limit(parseInt(req.params.limit) || 25)
-		.exec(function(err, data){ //o que fazer com o resultado
-
-				Model.find(filtro).count()
-				.exec(function(err, total){
-					var response = {};
-					response.total = total;
-					response.data = data;
-					res.json(response);
-				});
-
 		});
 }
 
@@ -109,17 +81,4 @@ exports.edit = function(req, res) {
 			});
 		}
 	);
-/*
-
-	Model.update(
-		{_id: req.body._id}, //where
-		req.body,//options
-		function (err, data){
-			if (!err && data) {
-				res.json({"success": true, "data": data, "err" : err, "form" : req.body});
-			} else {
-				res.json({"success": false, "data": data, "err" : err, "form" : req.body});
-			}
-		}
-	);*/
 }

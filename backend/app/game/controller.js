@@ -6,10 +6,13 @@ exports.index = function(req, res) {
 	var texto = req.params.text;
 	const filtro = {};
 
-	Model.find(filtro)
-		.skip(parseInt(req.params.skip) || 0).limit(parseInt(req.params.limit) || 25)
-		.exec(function(err, data){ //o que fazer com o resultado
+	let skip = (req.params.page - 1) * 10;
 
+	Model.find(filtro)
+		.skip(skip).limit(10)
+		.sort({ name: 1})
+		.exec(function(err, data){ //o que fazer com o resultado
+			console.log(data);
 				Model.find(filtro).count()
 				.exec(function(err, total){
 					var response = {};
@@ -17,7 +20,6 @@ exports.index = function(req, res) {
 					response.data = data;
 					res.json(response);
 				});
-
 		});
 }
 

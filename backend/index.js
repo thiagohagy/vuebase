@@ -15,7 +15,14 @@ app.get('/api/', function (req, res, next) {
 
 var config = require('./config');
 var mongoose = require('mongoose');
-mongoose.connect(config.database);
+
+mongoose.Promise = global.Promise;
+mongoose.connect(config.database, {
+    keepAlive: true,
+    reconnectTries: Number.MAX_VALUE,
+    useMongoClient: true,
+});
+
 /*Seed - rota para cadastrar o admin no banco*/
 app.use('/api/fixture', require('./app/usuario/fixture'));
 
@@ -29,7 +36,6 @@ app.use('/api/v1', jwt);
 /*Modulos*/
 jwt.use('/usuario', require('./app/usuario'));
 jwt.use('/game', require('./app/game'));
-jwt.use('/config', require('./app/config'));
 
 var id = Number(process.env.id);
 var hit = 0;

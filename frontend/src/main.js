@@ -5,6 +5,7 @@ import 'nprogress/nprogress.css';
 import 'bootstrap';
 import 'open-iconic/font/css/open-iconic-bootstrap.css';
 import './assets/custom.css';
+import './../node_modules/bootstrap-vue/dist/bootstrap-vue.css';
 
 import Vue from 'vue';
 import App from './App';
@@ -15,6 +16,11 @@ import fontIcon from './services/fontIcon';
 
 //bootstrapVue for modals and etc
 import BootstrapVue from 'bootstrap-vue';
+Vue.use(BootstrapVue);
+
+// add paginate
+import Paginate from 'vuejs-paginate';
+Vue.component('paginate', Paginate);
 
 // add toasted
 import Toaster from 'vue-toasted';
