@@ -59,6 +59,7 @@ export default {
         this.$http.get('/v1/usuario').then((response) => {
           this.data = response.data.data;
           this.$router.push('/users');
+          this.$toasted.success('User removed');
         });
       })
     }
@@ -71,7 +72,4 @@ export default {
 }
 </script>
 
-<style>
-  
-</style>
 

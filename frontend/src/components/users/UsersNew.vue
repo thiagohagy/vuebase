@@ -79,7 +79,6 @@ export default {
   },
   methods: {
     save() {
-      
       if((!this.form.password || !this.form.login) || (this.form.password != this.form.passwordConfirm && this.validatePassword == true)) {
         this.hasError = true
         this.errorMessage = 'Inform the password and login.Password and password confirm must be equals.';
@@ -87,13 +86,9 @@ export default {
         this.hasError = false;
         this.$http.post('v1/usuario', this.form).then((response) => {
           if (response.data.success) {
-            // this.hasSuccess = true;
-            // this.successMessage = 'New user created.';
             this.$toasted.success('New user created');
-            setTimeout(() => {
               this.$router.push('/users');
-            }, 3000);
-          } else {            
+          } else {
             this.$toasted.error('Error on create');
           }
         });

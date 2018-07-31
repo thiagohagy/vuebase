@@ -62,9 +62,11 @@ export default {
       this.$http.post('v1/game', this.form).then((response) => {
         if (response.data.success) {
           this.hasSuccess = true
-          this.$router.push('/game')
+          this.$router.push('/game');
+          this.$toasted.success('Game saved');
         } else {
           this.hasError = true
+          this.$toasted.error('Game not saved');
         }
       });
     }

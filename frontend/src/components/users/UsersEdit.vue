@@ -80,12 +80,10 @@ export default {
         this.hasError = false;
         this.$http.put('v1/usuario', this.form).then((response) => {
           if (response.data.success) {
-            this.$toasted.success('User edited', { type:'error', icon: 'check' });
-            setTimeout(() => {
-              this.$router.push('/users')
-            }, 3000);
+            this.$router.push('/users')
+            this.$toasted.success('User edited');
           } else {
-            this.$$toasted.error('Error on edit',{ type:'error', icon: 'check' });
+            this.$$toasted.error('Error on edit');
           }
         });
       }

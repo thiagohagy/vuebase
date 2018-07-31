@@ -67,9 +67,11 @@ export default {
       this.$http.put('v1/game', this.form).then((response) => {
         if (response.data.success) {
           this.hasSuccess = true
-          this.$router.push('/game')
+          this.$router.push('/game');
+          this.$toasted.success('Game updated');
         } else {
-          this.hasError = true
+          this.hasError = true;
+          this.$toasted.error('Game not updated');
         }
       });
     }
